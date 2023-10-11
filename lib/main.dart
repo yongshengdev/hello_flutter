@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hello_flutter/riverpod/river_pod_page.dart';
 
+// 1. Provider
 final Provider<String> helloWorldProvider = Provider((_) => "hello world");
+// 2. StateProvider
+final StateProvider<int> countProvider = StateProvider((_) => 0);
 
 void main() {
   // 所有使用Riverpod的Flutter程序，都必须在widget tree的根部添加ProviderScope，用于储存各个provider
