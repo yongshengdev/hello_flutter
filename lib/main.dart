@@ -6,6 +6,11 @@ import 'package:hello_flutter/riverpod/river_pod_page.dart';
 final Provider<String> helloWorldProvider = Provider((_) => "hello world");
 // 2. StateProvider
 final StateProvider<int> countProvider = StateProvider((_) => 0);
+// 3. FutureProvider
+final FutureProvider<String> futureProvider = FutureProvider((_) async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 'Riverpod';
+});
 
 void main() {
   // 所有使用Riverpod的Flutter程序，都必须在widget tree的根部添加ProviderScope，用于储存各个provider
@@ -45,14 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
           GestureDetector(
-          child: Container(
-            height: 50,
-            decoration: const BoxDecoration(color: Colors.green),
-            child: const Center(
-              child: Text("river pod"),
-            ),
-          ),
-          onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RiverPodPage()))})
+              child: Container(
+                height: 50,
+                decoration: const BoxDecoration(color: Colors.green),
+                child: const Center(
+                  child: Text("river pod"),
+                ),
+              ),
+              onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RiverPodPage()))})
         ]));
   }
 }

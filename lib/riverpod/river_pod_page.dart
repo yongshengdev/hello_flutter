@@ -12,7 +12,7 @@ class RiverPodPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text("river pod"),
         ),
-        body: Stack(children: [
+        body: Column(children: [
           Container(
               height: 50,
               decoration: const BoxDecoration(color: Colors.green),
@@ -20,7 +20,18 @@ class RiverPodPage extends ConsumerWidget {
                 // 使用Consumer（ConsumerWidget的封装），控制刷新的范围
                 int count = ref.watch(countProvider);
                 return Text('$value $count');
-              })))
+              }))),
+          Container(
+              height: 50,
+              decoration: const BoxDecoration(color: Colors.yellow),
+              child: Consumer(builder: (context, ref, _) {
+                AsyncValue<String> futureProviderValue = ref.watch(futureProvider);
+                return futureProviderValue.when(
+                  data: (data) => Text("future value: $data"),
+                  error: (err, stack) => const Text('Oops, something unexpected happened'),
+                  loading: () => const CircularProgressIndicator(),
+                );
+              }))
         ]),
         floatingActionButton: FloatingActionButton(
           onPressed: () => ref.read(countProvider.notifier).state++,
