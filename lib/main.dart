@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:hello_flutter/native_contact/native_contact_page.dart';
-import 'package:hello_flutter/riverpod/river_pod_page.dart';
+import 'package:hello_flutter/routes/router_navigator_observer.dart';
+import 'package:hello_flutter/ui/route/route_page.dart';
 import 'package:hello_flutter/utils/widget_util.dart';
+
+import 'ui/native_contact/native_contact_page.dart';
+import 'ui/riverpod/river_pod_page.dart';
 
 void main() {
   // 所有使用Riverpod的Flutter程序，都必须在widget tree的根部添加ProviderScope，用于储存各个provider
-  runApp(const ProviderScope(child: MyApp()));
+  mainRunApp(const MyApp());
+}
+
+Future<void> mainRunApp(Widget child) async {
+  // 定义route的名称
+
+  runApp(ProviderScope(child: child));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: '首页'),
-      navigatorObservers: [FlutterSmartDialog.observer],
+      navigatorObservers: [RouterNavigatorObserver(), FlutterSmartDialog.observer],
       builder: FlutterSmartDialog.init(),
     );
   }
@@ -47,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
           WidgetUtil.generateRow(
               "river pod", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RiverPodPage()))}),
           WidgetUtil.generateRow(
-              "flutter与原生通信", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NativeContactPage()))})
+              "flutter与原生通信", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NativeContactPage()))}),
+          WidgetUtil.generateRow("路由跳转", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RoutePage()))})
         ]));
   }
 }

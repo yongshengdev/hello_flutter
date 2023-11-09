@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/native_contact/method_channel_page.dart';
 import 'package:hello_flutter/utils/widget_util.dart';
+
+import 'method_channel_page.dart';
 
 class NativeContactPage extends StatefulWidget {
 
