@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hello_flutter/main.dart';
 
+// 1. Provider
+final Provider<String> helloWorldProvider = Provider((_) => "hello world");
+// 2. StateProvider
+final StateProvider<int> countProvider = StateProvider((_) => 0);
+// 3. FutureProvider
+final FutureProvider<String> futureProvider = FutureProvider((_) async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 'Riverpod';
+});
 /// 学习博客：https://blog.csdn.net/qq_17766199/article/details/128032642
 /// 官网地址：https://riverpod.dev/docs/getting_started
 class RiverPodPage extends ConsumerWidget {
