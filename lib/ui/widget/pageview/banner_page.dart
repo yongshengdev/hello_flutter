@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'banner_widget.dart';
 
+
 // Page
 class BannerPage extends StatefulWidget {
   const BannerPage({super.key});

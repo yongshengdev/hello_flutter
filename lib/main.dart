@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hello_flutter/routes/router_navigator_observer.dart';
 import 'package:hello_flutter/ui/route/route_page.dart';
-import 'package:hello_flutter/ui/widget/banner_page.dart';
+import 'package:hello_flutter/ui/widget/pageview/banner_page.dart';
 import 'package:hello_flutter/utils/widget_util.dart';
 
 import 'ui/native_contact/native_contact_page.dart';
