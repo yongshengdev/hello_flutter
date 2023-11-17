@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hello_flutter/routes/router_navigator_observer.dart';
 import 'package:hello_flutter/ui/route/route_page.dart';
+import 'package:hello_flutter/ui/widget/banner_page.dart';
 import 'package:hello_flutter/utils/widget_util.dart';
 
 import 'ui/native_contact/native_contact_page.dart';
@@ -57,7 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
               "river pod", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RiverPodPage()))}),
           WidgetUtil.generateRow(
               "flutter与原生通信", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NativeContactPage()))}),
-          WidgetUtil.generateRow("路由跳转", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RoutePage()))})
+          WidgetUtil.generateRow("路由跳转", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const RoutePage()))}),
+          WidgetUtil.generateRow(
+              "PageView", () => {Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const BannerPage()))})
         ]));
   }
 }
