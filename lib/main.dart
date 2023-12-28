@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:hello_flutter/routes/router_navigator_observer.dart';
+import 'package:hello_flutter/ui/riverpod/provider_logger.dart';
 import 'package:hello_flutter/ui/route/route_page.dart';
 import 'package:hello_flutter/ui/widget/pageview/banner_page.dart';
 import 'package:hello_flutter/utils/widget_util.dart';
@@ -17,7 +18,7 @@ void main() {
 Future<void> mainRunApp(Widget child) async {
   // 定义route的名称
 
-  runApp(ProviderScope(child: child));
+  runApp(ProviderScope(observers: [ProviderLogger()], child: child));
 }
 
 class MyApp extends StatelessWidget {
